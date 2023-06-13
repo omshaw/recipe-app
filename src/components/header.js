@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../logo.jpg';
 
-const header= ({h})=>{
+const header= ({fun})=>{
     return(
     <div className="header">
         <div className="nav">
@@ -13,18 +13,17 @@ const header= ({h})=>{
                     <a href="/">Home</a>
                  </li>
                  <li className="li">
-                    <a href="/indian dish">Indian Dish</a>
+                    <a onClick={(e)=>{fun(e,'Indian Dish')}}>Indian Dish</a>
                  </li>
                  <li className="li">
-                    <a href="/main course">Main Course</a>
+                    <a onClick={(e)=>{fun(e,'Main Course')}}>Main Course</a>
                  </li>
                  <li className="li">
-                    <a href="/desert">Desert</a>
+                    <a onClick={(e)=>{fun(e,'Desert')}}>Desert</a>
                  </li>
              </ul>
              </div>
         </div>
-
     </div>
     )
 }

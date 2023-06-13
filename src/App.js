@@ -10,16 +10,15 @@ import Header from './components/header.js';
 import $ from "jquery";
 const APP_ID = process.env.REACT_APP_ID;
 const APP_KEY = process.env.REACT_APP_KEY;
-
 function App() {
   const [value, setValue] = useState('');
   let [recipes, setRecipes] = useState([]);
-  const [search, setSearch] = useState(window.location.pathname);
-
-  $(document).ready(function(){
-    let d=window.location.pathname;
-    $('.li a[href^="'+d+'"]').addClass('active');
-  });
+  const [search, setSearch] = useState("");
+  // console.log(window.location.pathname);
+  // $(document).ready(function(){
+  //   let d=window.location.pathname;
+  //   $('.li a[href^="'+d+'"]').addClass('active');
+  // });
   const getrecipe = async () => {
     const response = await fetch(`https://api.edamam.com/search?q=${search}&app_id=${APP_ID}&app_key=${APP_KEY}`);
     const data = await response.json();
@@ -32,6 +31,11 @@ function App() {
     setValue(e.target.value);
   }
 
+  const Navsubmit = (e,v) => {
+    e.preventDefault();
+    setSearch(v);
+  }
+  
   const submit = e => {
     e.preventDefault();
     setSearch(value);
@@ -81,7 +85,7 @@ const b=(e)=>{
 }
   return (
     <div className="App">
-      <Header h={setSearch}/>
+      <Header fun={Navsubmit}/>
       <Input value={value} update={update} submit={submit} />
       <div className="recipe">
         <button id ="top" onClick={myfunc}>BACK TO TOP</button>
