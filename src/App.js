@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-
 // Put any other imports below so that CSS from your
 // components takes precedence over default styles.
 import './App.css';
@@ -9,8 +8,8 @@ import Recipe from './components/recipe.js';
 import Footer from './components/footer.js';
 import Header from './components/header.js';
 import $ from "jquery";
-const APP_ID = "6b4b7304";
-const APP_KEY = "45f12bc0176388ef6eff6c869eb8cd63";
+const APP_ID = process.env.REACT_APP_ID;
+const APP_KEY = process.env.REACT_APP_KEY;
 
 function App() {
   const [value, setValue] = useState('');
